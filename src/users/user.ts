@@ -36,10 +36,10 @@ export const playerYoshi: Racer = {
   velocidade: 4,
 };
 
-export const playerDonkey:Racer={
-    nome:'Donkey Kong',
-    velocidade:2,
-    manobrabilidade:2,
-    pontos:0,
-    poder:5,
-}
+export const playerDonkey: Racer = {
+  nome: 'Donkey Kong',
+  velocidade: 2,
+  manobrabilidade: 2,
+  pontos: 0,
+  poder: 5,
+};
