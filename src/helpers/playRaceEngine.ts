@@ -17,6 +17,16 @@ export const getRandomBlock = async () => {
   }
   return result;
 };
+const logs = async (
+  block: string,
+  player: Racer,
+  diceresult: number,
+  skill: number,
+) => {
+  console.log(
+    `${player.nome} rolou um dado 🎲 de ${block} ${diceresult} +${skill} `,
+  );
+};
 export const playRaceEngine = async (player1: Racer, player2: Racer) => {
   for (let i = 1; i <= 5; i++) {
     console.log(`🏁 Rodada ${i}`);
@@ -30,17 +40,32 @@ export const playRaceEngine = async (player1: Racer, player2: Racer) => {
     let totalSkil1 = 0;
     let totalSkil2 = 0;
     if (block === 'RETA') {
-        totalSkil1= diceresult1 +player1.velocidade
-        totalSkil2 = diceresult2 + player2.velocidade
+      totalSkil1 = diceresult1 + player1.velocidade;
+      totalSkil2 = diceresult2 + player2.velocidade;
+      await logs('VELOCIDADE', player1, diceresult1, player1.velocidade);
+      await logs('VELOCIDADE', player2, diceresult2, player2.velocidade);
     }
     if (block === 'CURVA') {
-        totalSkil1= diceresult1 + player1.manobrabilidade
-        totalSkil2= diceresult2 + player2.manobrabilidade
+      totalSkil1 = diceresult1 + player1.manobrabilidade;
+      totalSkil2 = diceresult2 + player2.manobrabilidade;
+      await logs(
+        'MANOBRABILIDADE',
+        player1,
+        diceresult1,
+        player1.manobrabilidade,
+      );
+      await logs(
+        'MANOBRABILIDADE',
+        player2,
+        diceresult2,
+        player2.manobrabilidade,
+      );
     }
     if (block === 'CONFRONTO') {
-        totalSkil1 = diceresult1 + player1.poder
-        totalSkil2= diceresult2 + player2.poder
+      totalSkil1 = diceresult1 + player1.poder;
+      totalSkil2 = diceresult2 + player2.poder;
+      await logs('CONFRONTO', player1, diceresult1, player1.poder);
+      await logs('CONFRONTO', player2, diceresult2, player2.poder);
     }
-    
   }
 };

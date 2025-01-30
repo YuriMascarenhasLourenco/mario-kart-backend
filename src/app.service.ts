@@ -2,10 +2,11 @@ import { Injectable } from '@nestjs/common';
 import * as readlineSync from 'readline-sync';
 import { choosePlayer, playerName } from './helpers/choosePlayer';
 import { players } from './helpers/players';
+import { playRaceEngine } from './helpers/playRaceEngine';
 
 @Injectable()
 export class AppService {
-  executeTask() {
+  async executeTask() {
     console.log(
       'Escolha um personagem entre Mario, Yoshi ,Bowser, Peach, Luigi e Donkey Kong',
     );
@@ -17,5 +18,6 @@ export class AppService {
     console.log(
       `🏁🚨 Corrida entre ${player1.nome} e ${player2.nome} começado... \n`,
     );
+    await playRaceEngine(player1, player2);
   }
 }
